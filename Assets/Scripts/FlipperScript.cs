@@ -6,6 +6,7 @@ public class FlipperScript : MonoBehaviour {
 	public bool leftFlipperKey = false;
     Rigidbody2D rb;
     public float flipperSpeed = 300;
+
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
