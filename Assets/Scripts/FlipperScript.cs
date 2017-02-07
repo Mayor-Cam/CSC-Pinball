@@ -6,6 +6,8 @@ public class FlipperScript : MonoBehaviour {
 	public bool leftFlipperKey = false;
     Rigidbody2D rb;
     public float flipperSpeed = 300;
+    public float minAngle = 180;
+    public float maxAngle = 40;
 
     // Use this for initialization
     void Start () {
@@ -23,16 +25,16 @@ public class FlipperScript : MonoBehaviour {
 	}
 	void FixedUpdate() {
 		if(leftFlipperKey){
-            if (transform.eulerAngles.z < 30 || transform.eulerAngles.z > 180)
+            if (transform.eulerAngles.z < maxAngle || transform.eulerAngles.z > minAngle)
                 rb.MoveRotation(rb.rotation + flipperSpeed * Time.deltaTime);
             else
             {
                 rb.angularVelocity = 0;
-                transform.eulerAngles = new Vector3(0, 0, 30);
+                transform.eulerAngles = new Vector3(0, 0, maxAngle);
             }
 		}
 		else {
-            if (transform.eulerAngles.z > 320 || transform.eulerAngles.z < 180)
+            if (transform.eulerAngles.z > 320 || transform.eulerAngles.z < minAngle)
                 rb.MoveRotation(rb.rotation - flipperSpeed * Time.deltaTime);
             else
             {
